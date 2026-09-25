@@ -427,14 +427,32 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                             ),
                             border: InputBorder.none,
                             filled: false,
-                            suffixIcon: IconButton(
-                              onPressed: _saveCurrentSearch,
-                              tooltip: 'Save search',
-                              icon: Icon(
-                                Icons.bookmark_add_outlined,
-                                color: colors.onSurfaceVariant,
-                                size: 20,
-                              ),
+                            suffixIcon: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (_searchQuery.isNotEmpty)
+                                  IconButton(
+                                    tooltip: 'Clear search',
+                                    onPressed: () {
+                                      _searchController.clear();
+                                      _runLocalSearch('');
+                                    },
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: colors.onSurfaceVariant,
+                                      size: 20,
+                                    ),
+                                  ),
+                                IconButton(
+                                  onPressed: _saveCurrentSearch,
+                                  tooltip: 'Save search',
+                                  icon: Icon(
+                                    Icons.bookmark_add_outlined,
+                                    color: colors.onSurfaceVariant,
+                                    size: 20,
+                                  ),
+                                ),
+                              ],
                             ),
                             contentPadding: const EdgeInsets.symmetric(
                               vertical: 14,
