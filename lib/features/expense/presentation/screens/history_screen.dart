@@ -175,7 +175,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
   List<TransactionData> get _monthTransactions => _transactions;
 
   List<TransactionData> get _filtered {
-    var list = _searchQuery.isNotEmpty ? _searchResults : _transactions;
+    var list = _searchQuery.trim().isNotEmpty ? _searchResults : _transactions;
     if (_activeFilter != 'All') {
       list = list.where((t) => t.category == _activeFilter).toList();
     }
