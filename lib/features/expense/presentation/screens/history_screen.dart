@@ -34,6 +34,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
   String _searchQuery = '';
   List<TransactionData> _searchResults = [];
   Timer? _searchDebounce;
+  int _searchRevision = 0;
   List<String> _savedSearches = [];
   String _activeFilter = 'All';
   DateTime _selectedMonth = DateTime(DateTime.now().year, DateTime.now().month);
@@ -183,6 +184,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
 
   Future<void> _runLocalSearch(String query) async {
     _searchDebounce?.cancel();
+    final revision = ++_searchRevision;
     final trimmed = query.trim();
     setState(() => _searchQuery = query);
     if (trimmed.isEmpty) {
@@ -194,8 +196,9 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
     _searchDebounce = Timer(const Duration(milliseconds: 220), () async {
       final intent = _parseSearchIntent(trimmed);
       final source = await _transactionsForIntent(intent);
+      // A newer query or clearing the field invalidates this request.
+      if (!mounted || revision != _searchRevision) return;
       final found = _applyIntentFilter(source, intent);
-      if (!mounted) return;
       setState(() => _searchResults = found);
     });
   }
