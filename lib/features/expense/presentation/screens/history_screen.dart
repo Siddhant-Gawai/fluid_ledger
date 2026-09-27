@@ -399,6 +399,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
           : RefreshIndicator(
               onRefresh: _loadInitial,
               child: CustomScrollView(
+                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 slivers: [
                   // Month selector + budget health
                   SliverToBoxAdapter(child: _buildMonthSelector(colors)),
