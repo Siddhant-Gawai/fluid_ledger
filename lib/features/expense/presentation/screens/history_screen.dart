@@ -416,6 +416,8 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                         radius: 20,
                         child: TextField(
                           controller: _searchController,
+                          textInputAction: TextInputAction.search,
+                          onSubmitted: (_) => FocusScope.of(context).unfocus(),
                           onChanged: _runLocalSearch,
                           style: GoogleFonts.inter(fontSize: 14),
                           decoration: InputDecoration(
