@@ -20,6 +20,8 @@ SMS categorization uses parsing rules and merchant mappings. Offline behavior an
 
 Transaction history now includes:
 
+- Pull-to-refresh for short or empty transaction lists.
+
 - A clear-search button that resets the query and search results.
 - Protection against older asynchronous searches overwriting newer results.
 - Normal history display when a query contains only whitespace.
