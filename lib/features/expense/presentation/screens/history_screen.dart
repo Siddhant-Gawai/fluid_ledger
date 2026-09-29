@@ -450,11 +450,13 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                                     ),
                                   ),
                                 IconButton(
-                                  onPressed: _saveCurrentSearch,
+                                  onPressed: _searchQuery.trim().isEmpty
+                                      ? null
+                                      : _saveCurrentSearch,
                                   tooltip: 'Save search',
-                                  icon: Icon(
+                                  color: colors.onSurfaceVariant,
+                                  icon: const Icon(
                                     Icons.bookmark_add_outlined,
-                                    color: colors.onSurfaceVariant,
                                     size: 20,
                                   ),
                                 ),

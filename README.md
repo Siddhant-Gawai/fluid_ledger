@@ -25,6 +25,7 @@ Transaction history now includes:
 - Normal history display when a query contains only whitespace.
 - Keyboard dismissal when dragging the transaction list.
 - A Search keyboard action that dismisses the keyboard when submitted.
+- A disabled Save search button for empty or whitespace-only queries, with the theme's disabled appearance.
 
 ## Requirements
 
