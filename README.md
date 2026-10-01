@@ -27,6 +27,7 @@ Transaction history now includes:
 - Normal history display when a query contains only whitespace.
 - Keyboard dismissal when dragging the transaction list.
 - A Search keyboard action that dismisses the keyboard when submitted.
+- A Search transactions field label that remains visible when a query is entered.
 - Autocorrect disabled in transaction search to avoid changing merchant names.
 - A disabled Save search button for empty or whitespace-only queries, with the theme's disabled appearance.
 

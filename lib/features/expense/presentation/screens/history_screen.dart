@@ -428,6 +428,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                               color: colors.onSurfaceVariant,
                               size: 20,
                             ),
+                            labelText: 'Search transactions',
                             hintText: 'Search merchant, amount, category...',
                             hintStyle: GoogleFonts.inter(
                               fontSize: 14,
