@@ -503,7 +503,12 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                               padding: const EdgeInsets.only(right: 8),
                               child: GestureDetector(
                                 onTap: () {
-                                  _searchController.text = q;
+                                  _searchController.value = TextEditingValue(
+                                    text: q,
+                                    selection: TextSelection.collapsed(
+                                      offset: q.length,
+                                    ),
+                                  );
                                   _runLocalSearch(q);
                                 },
                                 onLongPress: () => _removeSavedSearch(q),

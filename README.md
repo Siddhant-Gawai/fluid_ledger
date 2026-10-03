@@ -23,6 +23,7 @@ Transaction history now includes:
 - Pull-to-refresh for short or empty transaction lists.
 
 - A clear-search button that resets the query and search results.
+- Selecting a saved search places the cursor at the end for easier editing.
 - Protection against older asynchronous searches overwriting newer results.
 - Normal history display when a query contains only whitespace.
 - Keyboard dismissal when dragging the transaction list.
