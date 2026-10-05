@@ -513,6 +513,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                                 },
                                 onLongPress: () => _removeSavedSearch(q),
                                 child: Container(
+                                  constraints: const BoxConstraints(maxWidth: 240),
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 12,
                                     vertical: 10,
@@ -545,14 +546,18 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                                             : colors.onSurfaceVariant,
                                       ),
                                       const SizedBox(width: 6),
-                                      Text(
-                                        q,
-                                        style: GoogleFonts.inter(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: active
-                                              ? colors.secondary
-                                              : colors.onSurfaceVariant,
+                                      Flexible(
+                                        child: Text(
+                                          q,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.inter(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: active
+                                                ? colors.secondary
+                                                : colors.onSurfaceVariant,
+                                          ),
                                         ),
                                       ),
                                     ],
