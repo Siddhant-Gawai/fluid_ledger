@@ -311,6 +311,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
     final refreshed = await SavedSearchService.instance.getSavedSearches();
     if (!mounted) return;
     setState(() => _savedSearches = refreshed);
+    showSuccessSnackBar('Saved search removed');
   }
 
   // Group transactions by date — with month breakers
