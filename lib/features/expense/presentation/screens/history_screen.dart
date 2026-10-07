@@ -491,6 +491,19 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                   ),
                   if (_savedSearches.isNotEmpty)
                     SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+                        child: Text(
+                          'Saved searches · Long press to remove',
+                          style: GoogleFonts.inter(
+                            fontSize: 12,
+                            color: colors.onSurfaceVariant,
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (_savedSearches.isNotEmpty)
+                    SliverToBoxAdapter(
                       child: SizedBox(
                         height: 42,
                         child: ListView(

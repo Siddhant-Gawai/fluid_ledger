@@ -25,6 +25,7 @@ Transaction history now includes:
 - A clear-search button that resets the query and search results.
 - Selecting a saved search places the cursor at the end for easier editing.
 - Removing a saved search with a long press shows a confirmation message.
+- The saved-search row includes a visible long-press removal hint.
 - Long saved-search shortcuts use a compact, single-line label with an ellipsis; selecting one still uses the full query.
 - Protection against older asynchronous searches overwriting newer results.
 - Normal history display when a query contains only whitespace.
