@@ -605,7 +605,10 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'No transactions yet',
+                                _searchQuery.trim().isNotEmpty ||
+                                        _activeFilter != 'All'
+                                    ? 'No matching transactions'
+                                    : 'No transactions yet',
                                 style: GoogleFonts.manrope(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
@@ -614,7 +617,11 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                'Add an expense to get started',
+                                _searchQuery.trim().isNotEmpty ||
+                                        _activeFilter != 'All'
+                                    ? 'Try another search or filter'
+                                    : 'Add an expense to get started',
+                                textAlign: TextAlign.center,
                                 style: GoogleFonts.inter(
                                   fontSize: 14,
                                   color: colors.outline,

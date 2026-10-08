@@ -21,6 +21,7 @@ SMS categorization uses parsing rules and merchant mappings. Offline behavior an
 Transaction history now includes:
 
 - Pull-to-refresh for short or empty transaction lists.
+- Searches or filters with no results show a matching-specific empty state and suggest adjusting the search or filter.
 
 - A clear-search button that resets the query and search results.
 - Selecting a saved search places the cursor at the end for easier editing.
