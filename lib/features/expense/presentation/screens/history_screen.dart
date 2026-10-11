@@ -587,7 +587,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                   const SliverToBoxAdapter(child: SizedBox(height: 12)),
 
                   // Empty state
-                  if (_filtered.isEmpty)
+                  if (_filtered.isEmpty && !_loadingMonth)
                     SliverFillRemaining(
                       child: Center(
                         child: PremiumSurfaceCard(
