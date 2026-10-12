@@ -910,7 +910,10 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: GestureDetector(
-        onTap: () => setState(() => _activeFilter = label),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          setState(() => _activeFilter = label);
+        },
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           decoration: BoxDecoration(
