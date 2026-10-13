@@ -22,6 +22,7 @@ Transaction history now includes:
 
 - Pull-to-refresh for short or empty transaction lists.
 - Empty-state messages stay hidden while a selected month is loading.
+- Failed month loads show an error message with a pull-to-refresh retry hint.
 - Searches or filters with no results show a matching-specific empty state and suggest adjusting the search or filter.
 
 - A clear-search button that resets the query and search results.

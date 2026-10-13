@@ -151,6 +151,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
       debugPrint('Error loading month: $e');
       if (mounted) {
         setState(() => _loadingMonth = false);
+        showErrorSnackBar('Could not load this month. Pull down to retry.');
       }
     }
   }
