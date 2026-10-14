@@ -195,12 +195,18 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
       return;
     }
     _searchDebounce = Timer(const Duration(milliseconds: 220), () async {
-      final intent = _parseSearchIntent(trimmed);
-      final source = await _transactionsForIntent(intent);
-      // A newer query or clearing the field invalidates this request.
-      if (!mounted || revision != _searchRevision) return;
-      final found = _applyIntentFilter(source, intent);
-      setState(() => _searchResults = found);
+      try {
+        final intent = _parseSearchIntent(trimmed);
+        final source = await _transactionsForIntent(intent);
+        // A newer query or clearing the field invalidates this request.
+        if (!mounted || revision != _searchRevision) return;
+        final found = _applyIntentFilter(source, intent);
+        setState(() => _searchResults = found);
+      } catch (e) {
+        if (!mounted || revision != _searchRevision) return;
+        debugPrint('History search failed: $e');
+        showErrorSnackBar('Could not search transactions. Please try again.');
+      }
     });
   }
 
