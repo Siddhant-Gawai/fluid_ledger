@@ -187,13 +187,11 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
     _searchDebounce?.cancel();
     final revision = ++_searchRevision;
     final trimmed = query.trim();
-    setState(() => _searchQuery = query);
-    if (trimmed.isEmpty) {
-      if (mounted) {
-        setState(() => _searchResults = []);
-      }
-      return;
-    }
+    setState(() {
+      _searchQuery = query;
+      _searchResults = [];
+    });
+    if (trimmed.isEmpty) return;
     _searchDebounce = Timer(const Duration(milliseconds: 220), () async {
       try {
         final intent = _parseSearchIntent(trimmed);
