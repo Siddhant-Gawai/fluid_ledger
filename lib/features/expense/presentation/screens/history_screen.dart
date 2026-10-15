@@ -604,7 +604,10 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.receipt_long,
+                                _searchQuery.trim().isNotEmpty ||
+                                        _activeFilter != 'All'
+                                    ? Icons.search_off_rounded
+                                    : Icons.receipt_long,
                                 size: 56,
                                 color: colors.outlineVariant,
                               ),
