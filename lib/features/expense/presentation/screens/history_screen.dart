@@ -635,6 +635,17 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                                   color: colors.outline,
                                 ),
                               ),
+                              if (_searchQuery.trim().isNotEmpty ||
+                                  _activeFilter != 'All')
+                                TextButton(
+                                  onPressed: () {
+                                    FocusScope.of(context).unfocus();
+                                    _searchController.clear();
+                                    setState(() => _activeFilter = 'All');
+                                    _runLocalSearch('');
+                                  },
+                                  child: const Text('Clear search and filters'),
+                                ),
                             ],
                           ),
                         ),
