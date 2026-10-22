@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/common_widgets/merchant_icon.dart';
@@ -645,6 +646,16 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                                     _runLocalSearch('');
                                   },
                                   child: const Text('Clear search and filters'),
+                                )
+                              else
+                                TextButton.icon(
+                                  onPressed: () async {
+                                    await context.push('/add-expense');
+                                    if (!mounted) return;
+                                    await _loadInitial();
+                                  },
+                                  icon: const Icon(Icons.add),
+                                  label: const Text('Add expense'),
                                 ),
                             ],
                           ),

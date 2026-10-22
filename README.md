@@ -21,6 +21,7 @@ SMS categorization uses parsing rules and merchant mappings. Offline behavior an
 Transaction history now includes:
 
 - Pull-to-refresh for short or empty transaction lists.
+- Empty, unfiltered history includes an Add expense shortcut and refreshes after returning from the expense form.
 - A Clear search and filters button restores the selected month's transactions when no matches are found.
 - Empty filtered results use a search-specific icon to distinguish them from an empty ledger.
 - Empty-state messages stay hidden while a selected month is loading.
