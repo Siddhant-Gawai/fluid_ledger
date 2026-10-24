@@ -937,30 +937,34 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
 
   Widget _buildChip(String label, ColorScheme colors) {
     final isActive = _activeFilter == label;
-    return Padding(
-      padding: const EdgeInsets.only(right: 8),
-      child: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-          setState(() => _activeFilter = label);
-        },
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          decoration: BoxDecoration(
-            color: isActive ? colors.primary : colors.surfaceContainerLowest,
-            borderRadius: BorderRadius.circular(12),
-            border: isActive
-                ? null
-                : Border.all(
-                    color: colors.outlineVariant.withValues(alpha: 0.2),
-                  ),
-          ),
-          child: Text(
-            label,
-            style: GoogleFonts.inter(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: isActive ? Colors.white : colors.onSurfaceVariant,
+    return Semantics(
+      button: true,
+      selected: isActive,
+      child: Padding(
+        padding: const EdgeInsets.only(right: 8),
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            setState(() => _activeFilter = label);
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            decoration: BoxDecoration(
+              color: isActive ? colors.primary : colors.surfaceContainerLowest,
+              borderRadius: BorderRadius.circular(12),
+              border: isActive
+                  ? null
+                  : Border.all(
+                      color: colors.outlineVariant.withValues(alpha: 0.2),
+                    ),
+            ),
+            child: Text(
+              label,
+              style: GoogleFonts.inter(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: isActive ? Colors.white : colors.onSurfaceVariant,
+              ),
             ),
           ),
         ),
