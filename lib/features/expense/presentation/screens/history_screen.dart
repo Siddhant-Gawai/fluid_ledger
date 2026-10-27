@@ -523,6 +523,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                               padding: const EdgeInsets.only(right: 8),
                               child: GestureDetector(
                                 onTap: () {
+                                  FocusScope.of(context).unfocus();
                                   _searchController.value = TextEditingValue(
                                     text: q,
                                     selection: TextSelection.collapsed(
