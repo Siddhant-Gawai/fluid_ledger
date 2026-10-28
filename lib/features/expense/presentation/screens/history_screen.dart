@@ -126,6 +126,8 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
         month.month == _selectedMonth.month) {
       return;
     }
+    _searchDebounce?.cancel();
+    _searchRevision++;
     setState(() {
       _selectedMonth = month;
       _loadingMonth = true;

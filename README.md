@@ -35,6 +35,7 @@ Transaction history now includes:
 - The saved-search row includes a visible long-press removal hint.
 - Long saved-search shortcuts use a compact, single-line label with an ellipsis; selecting one still uses the full query.
 - Protection against older asynchronous searches overwriting newer results.
+- Switching months cancels pending searches and ignores results from searches started before the switch.
 - Changing the search text immediately clears results from the previous query.
 - Failed history searches show a retry message; errors from outdated searches are ignored.
 - Normal history display when a query contains only whitespace.
