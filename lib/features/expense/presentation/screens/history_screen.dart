@@ -521,69 +521,74 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
                             final active =
                                 _searchQuery.trim().toLowerCase() ==
                                 q.trim().toLowerCase();
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 8),
-                              child: GestureDetector(
-                                onTap: () {
-                                  FocusScope.of(context).unfocus();
-                                  _searchController.value = TextEditingValue(
-                                    text: q,
-                                    selection: TextSelection.collapsed(
-                                      offset: q.length,
+                            return Semantics(
+                              button: true,
+                              selected: active,
+                              hint: 'Long press to remove saved search',
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    FocusScope.of(context).unfocus();
+                                    _searchController.value = TextEditingValue(
+                                      text: q,
+                                      selection: TextSelection.collapsed(
+                                        offset: q.length,
+                                      ),
+                                    );
+                                    _runLocalSearch(q);
+                                  },
+                                  onLongPress: () => _removeSavedSearch(q),
+                                  child: Container(
+                                    constraints: const BoxConstraints(maxWidth: 240),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                      vertical: 10,
                                     ),
-                                  );
-                                  _runLocalSearch(q);
-                                },
-                                onLongPress: () => _removeSavedSearch(q),
-                                child: Container(
-                                  constraints: const BoxConstraints(maxWidth: 240),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                    vertical: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: active
-                                        ? colors.secondary.withValues(
-                                            alpha: 0.16,
-                                          )
-                                        : colors.surfaceContainerLow,
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
+                                    decoration: BoxDecoration(
                                       color: active
                                           ? colors.secondary.withValues(
-                                              alpha: 0.32,
+                                              alpha: 0.16,
                                             )
-                                          : colors.outlineVariant.withValues(
-                                              alpha: 0.15,
-                                            ),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Icon(
-                                        Icons.bookmark_outline_rounded,
-                                        size: 14,
+                                          : colors.surfaceContainerLow,
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(
                                         color: active
-                                            ? colors.secondary
-                                            : colors.onSurfaceVariant,
+                                            ? colors.secondary.withValues(
+                                                alpha: 0.32,
+                                              )
+                                            : colors.outlineVariant.withValues(
+                                                alpha: 0.15,
+                                              ),
                                       ),
-                                      const SizedBox(width: 6),
-                                      Flexible(
-                                        child: Text(
-                                          q,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.inter(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                            color: active
-                                                ? colors.secondary
-                                                : colors.onSurfaceVariant,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          Icons.bookmark_outline_rounded,
+                                          size: 14,
+                                          color: active
+                                              ? colors.secondary
+                                              : colors.onSurfaceVariant,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Flexible(
+                                          child: Text(
+                                            q,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: GoogleFonts.inter(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w600,
+                                              color: active
+                                                  ? colors.secondary
+                                                  : colors.onSurfaceVariant,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
