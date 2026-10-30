@@ -131,6 +131,8 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
     setState(() {
       _selectedMonth = month;
       _loadingMonth = true;
+      _transactions = [];
+      _monthSnapshot = null;
       _activeFilter = 'All';
       _searchResults = [];
     });
