@@ -26,6 +26,7 @@ Transaction history now includes:
 - Empty filtered results use a search-specific icon to distinguish them from an empty ledger.
 - Empty-state messages stay hidden while a selected month is loading.
 - Switching months clears the previous month's transactions and cached summary while the new month loads.
+- Switching to a different month dismisses the search keyboard.
 - Failed month loads show an error message with a pull-to-refresh retry hint.
 - Searches or filters with no results show a matching-specific empty state and suggest adjusting the search or filter.
 

@@ -126,6 +126,7 @@ class HistoryScreenState extends ConsumerState<HistoryScreen> {
         month.month == _selectedMonth.month) {
       return;
     }
+    FocusScope.of(context).unfocus();
     _searchDebounce?.cancel();
     _searchRevision++;
     setState(() {
